@@ -1,0 +1,122 @@
+/* General Styles */
+body {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #333; /* Darker text for better readability on light background */
+  background-color: #f4f7f6; /* Light background */
+  margin: 0;
+  padding: 20px;
+}
+
+#app {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff; /* White background for the form container */
+  border: 1px solid #e0e0e0; /* Lighter border */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Softer shadow */
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50; /* Keep heading color distinct */
+  margin-bottom: 25px;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 20px; /* Increased spacing */
+}
+
+label {
+  display: block;
+  margin-bottom: 8px; /* Increased spacing */
+  font-weight: bold;
+  color: #555; /* Slightly lighter label color */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] { /* Added type="tel" */
+  width: 100%; /* Use 100% width */
+  padding: 12px; /* Slightly larger padding */
+  border: 1px solid #ccc; /* Standard border */
+  border-radius: 4px;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  font-size: 1rem; /* Ensure readable font size */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus { /* Added type="tel" */
+  border-color: #007bff; /* Highlight focus */
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Subtle focus shadow */
+}
+
+
+button[type="submit"] {
+  background-color: #007bff; /* Primary button color */
+  color: white;
+  padding: 12px 15px; /* Adjusted padding */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem; /* Match input font size */
+  width: 100%;
+  box-sizing: border-box;
+  transition: background-color 0.2s ease; /* Smooth hover transition */
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Message Area Styles */
+#message {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+/* Response Display Styles */
+#responseDisplay {
+  margin-top: 25px;
+  padding: 15px;
+  border: 1px solid #e0e0e0; /* Lighter border */
+  border-radius: 4px;
+  background-color: #f9f9f9; /* Very light grey background */
+}
+
+#responseDisplay h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  color: #444; /* Slightly darker heading */
+}
+
+#responseContent {
+  white-space: pre-wrap; /* Wrap long lines */
+  word-wrap: break-word; /* Break long words */
+  background-color: #f0f0f0; /* Light background for pre */
+  padding: 10px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 0.9rem; /* Slightly smaller mono font */
+  color: #333; /* Ensure text is readable */
+  max-height: 250px; /* Limit height and add scroll if needed */
+  overflow-y: auto;
+  border: 1px solid #ddd; /* Subtle border for the pre block */
+}
+
+/* Initially hide Cal.com Widget */
+#my-cal-inline {
+  display: none;
+  min-width: 320px; /* Retain minimum width */
+  height: 700px; /* Retain height */
+}
