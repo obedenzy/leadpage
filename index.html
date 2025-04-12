@@ -1,50 +1,656 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lead Form</title>
-  </head>
-  <body>
-    <div id="app">
-      <h1 id="formTitle">Lead Capture Form</h1>
-      <form id="leadForm">
-        <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-          <label for="phone">Phone:</label>
-          <input type="tel" id="phone" name="phone"> <!-- Added phone input -->
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-      <div id="message"></div>
-      <div id="responseDisplay">
-        <h2>Webhook Response:</h2>
-        <pre id="responseContent"></pre>
-      </div>
-      <!-- Cal inline embed code begins -->
-      <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline"></div>
-      <script type="text/javascript">
-        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-      Cal("init", "30min", {origin:"https://cal.com"});
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Luxe System - 10x Your Profits</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Site font family */
+        }
 
-        Cal.ns["30min"]("inline", {
-          elementOrSelector:"#my-cal-inline",
-          config: {"layout":"month_view"},
-          calLink: "obedenz/30min",
-        });
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
 
-        Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
-        </script>
-        <!-- Cal inline embed code ends -->
-    </div>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Logo Section */
+        .logo-section {
+            background-color: #ffffff; /* Or transparent if preferred */
+            padding: 15px 0;
+            border-bottom: 1px solid #eee; /* Optional separator */
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center the logo */
+        }
+
+        /* Updated styles for text logo */
+        .logo-text {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Use site font family */
+            font-size: 48px; /* Updated base size */
+            font-weight: bold;
+            color: #1a2a6c; /* Example color, adjust as needed */
+            text-decoration: none; /* If using an anchor */
+            white-space: pre; /* Preserve whitespace for potential multi-line art */
+        }
+
+
+        /* Hero Section */
+        .hero {
+            /* Apply darker gradient overlay */
+            background:
+                /* Darker gradient colors with high opacity */
+                linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(67, 24, 82, 0.95))
+                center center/cover no-repeat;
+            /* Background image is set inline on the HTML element */
+            background-size: cover; /* Ensure image covers the area */
+            background-position: center; /* Center the image */
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            overflow: hidden;
+            position: relative; /* Needed for potential pseudo-elements and stacking */
+        }
+
+        /* Hero Caption Style (Now H2) */
+        .hero-caption {
+            font-size: 44px; /* UPDATED size */
+            font-weight: bolder; /* UPDATED weight */
+            color: #E0E0E0; /* Slightly dimmer white */
+            margin-bottom: 15px; /* Space below caption */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.6); /* Subtle shadow */
+            /* Ensure it overrides default h2 margins if needed */
+            margin-top: 0;
+        }
+
+        /* REMOVED .hero h1 styles */
+
+        /* Style for the original H2 */
+        .hero h2:not(.hero-caption):not(.hero-subtext) { /* Target only the original h2 */
+            font-size: 32px;
+            margin-bottom: 20px; /* Reduced margin */
+            font-weight: 700;
+            color: #F0F0F0; /* Slightly off-white for visual hierarchy */
+            white-space: nowrap;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+             /* Stronger text shadow */
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+        }
+
+        /* Style for the moved paragraph (Now H2) */
+        .hero-subtext {
+            font-size: 20px; /* Adjust size as needed */
+            font-weight: 500;
+            color: #E0E0E0; /* Match caption color or adjust */
+            margin-bottom: 30px; /* Space below this text */
+            max-width: 800px; /* Control width */
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.6); /* Subtle shadow */
+            /* Ensure it overrides default h2 margins if needed */
+            margin-top: 0;
+        }
+
+        .highlight { /* General highlight style */
+            font-weight: 700;
+        }
+        .hero .highlight { /* Specific highlight color for hero */
+             color: #FFD700; /* Gold color for highlight */
+             /* Removed background styling */
+             padding: 0; /* Remove padding */
+             border-radius: 0; /* Remove border-radius */
+        }
+
+
+        .btn {
+            display: inline-block;
+            background-color: #FF6B35;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 0; /* Adjusted margin-top as space is now above */
+        }
+
+        .btn:hover {
+            background-color: #E85826;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Form & Benefits Section */
+        .form-benefits-section {
+            padding: 100px 0;
+            background-color: #f9f9f9;
+        }
+
+        .form-benefits-wrapper {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+            /* Center the form part when benefits are removed */
+            justify-content: center;
+            margin-top: 0; /* Removed potential top margin from intro paragraph */
+        }
+
+        .form-part {
+            /* Removed flex: 3; */
+            /* Set a max-width or width if needed */
+            max-width: 600px; /* Example width, adjust as needed */
+            width: 100%; /* Take available width up to max-width */
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Style for H2 elements within the form part */
+        .form-part h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 32px;
+            font-weight: 700; /* Ensure consistent weight */
+        }
+        /* Add margin top to the second h2 ("Start your...") */
+        .form-part h2 + h2 {
+             margin-top: 30px; /* Add space above the second title */
+        }
+
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: #FF6B35;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #E85826;
+        }
+
+        /* Added for JS feedback */
+        #message {
+            margin-top: 15px;
+            font-weight: 500;
+            display: none; /* Hidden initially */
+        }
+        #responseDisplay {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: left;
+            white-space: pre-wrap; /* Preserve formatting */
+            word-wrap: break-word;
+            display: none; /* Hidden initially */
+        }
+        #responseContent {
+            font-family: monospace;
+            font-size: 14px;
+        }
+
+        /* Added for Cal.com widget */
+        #my-cal-inline {
+            display: none; /* Hidden initially */
+            margin-top: 20px;
+            /* Add any specific styling needed for the Cal widget container */
+        }
+
+        /* Feature item styles (used in both comparison columns) */
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px; /* Reduced margin between items */
+            text-align: left; /* Ensure text aligns left */
+            padding: 15px; /* Add padding inside the item */
+            border-radius: 8px; /* Add border-radius */
+            transition: background-color 0.2s ease; /* Smooth transition */
+        }
+
+        /* Specific background colors for feature items */
+        .comparison-column.old-way .feature-item {
+            background-color: #fff3f3; /* Light red background */
+        }
+        .comparison-column.leadluxe-way .feature-item {
+            background-color: #e1f5ec; /* Light green background */
+        }
+
+        .feature-icon {
+            min-width: 60px; /* Increased min-width */
+            height: 60px; /* Increased height */
+            background-color: rgba(26, 42, 108, 0.1); /* Default background */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            color: #1a2a6c; /* Default icon color */
+            font-size: 28px; /* Increased font size for icons */
+            flex-shrink: 0; /* Prevent icon from shrinking */
+        }
+
+        /* Specific icon background/color for "Old Way" if needed */
+        .comparison-column.old-way .feature-icon {
+             background-color: rgba(220, 53, 69, 0.1); /* Light red background */
+             color: #dc3545; /* Red color */
+        }
+        /* Specific icon background/color for "LeadLuxe Way" */
+        .comparison-column.leadluxe-way .feature-icon {
+             background-color: rgba(26, 42, 108, 0.1); /* Light blue background */
+             color: #1a2a6c; /* Blue color */
+        }
+
+
+        .feature-text h3 { /* Used in LeadLuxe Way */
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold; /* Ensure h3 is bold */
+        }
+
+        .feature-text p { /* Used in both columns now */
+            color: #555; /* Adjusted color slightly for consistency */
+            font-size: 16px;
+            line-height: 1.5; /* Adjust line height for readability */
+            margin-bottom: 5px; /* Add small margin between paragraphs */
+        }
+        /* Style for the main point (title) in "Old Way" */
+        .comparison-column.old-way .feature-text p:first-child { /* Target specifically within old-way */
+            font-weight: bold; /* Make the title bold */
+            color: #333; /* Darker color for the main point */
+            margin-bottom: 3px; /* Reduce margin slightly */
+            font-size: 20px; /* UPDATED font size */
+        }
+
+
+        /* Comparison Section */
+        .comparison-section {
+            padding: 80px 0;
+            background-color: #ffffff; /* Or a slightly different background */
+        }
+
+        .comparison-wrapper {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start; /* Align items to the top */
+        }
+
+        .comparison-column {
+            flex: 1; /* Equal width columns */
+            background-color: #f9f9f9; /* Light background for columns */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .comparison-column h2 {
+            font-size: 28px;
+            margin-bottom: 35px; /* Increased margin */
+            color: #333;
+            text-align: center;
+        }
+
+        /* Video Section */
+        .video-section {
+            padding: 100px 0;
+            background-color: #f0f0f0; /* Slightly different background */
+        }
+
+        .video-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background-color: rgba(26, 42, 108, 0.9);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+         .play-button:hover {
+             background-color: rgba(255, 107, 53, 0.9); /* Use button color on hover */
+         }
+
+        .play-button::after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-left: 30px solid white;
+            margin-left: 7px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-caption { font-size: 38px; } /* Adjust caption size */
+            /* REMOVED .hero h1 */
+            .hero h2:not(.hero-caption):not(.hero-subtext) { font-size: 28px; white-space: normal; max-width: 95%; } /* Adjust original h2 */
+            .hero-subtext { font-size: 19px; max-width: 90%; } /* Adjust subtext size */
+            .hero { padding: 80px 0; }
+
+            /* Form part takes full width on smaller screens */
+            .form-benefits-wrapper { flex-direction: column; gap: 0; } /* Remove gap when stacked */
+            .form-part { max-width: 90%; margin: 0 auto; } /* Center form */
+
+            .comparison-wrapper { flex-direction: column; gap: 30px; } /* Stack columns */
+            .comparison-column { max-width: 90%; margin: 0 auto; } /* Center stacked columns */
+
+            .video-wrapper { max-width: 90%; }
+        }
+
+        @media (max-width: 768px) {
+            /* Removed .logo-img height adjustment */
+            .logo-text { font-size: 36px; } /* Adjust text logo size */
+
+            .hero-caption { font-size: 32px; } /* Adjust caption size */
+            /* REMOVED .hero h1 */
+            .hero h2:not(.hero-caption):not(.hero-subtext) { font-size: 24px; } /* Adjust original h2 */
+            .hero-subtext { font-size: 18px; max-width: 95%; } /* Adjust subtext size */
+            .hero { padding: 60px 0; }
+            .btn { padding: 12px 25px; font-size: 16px; }
+
+            .form-part { padding: 30px 20px; max-width: 95%; }
+            .form-part h2 { font-size: 28px; } /* Adjust form h2 size */
+
+            .feature-item { margin-bottom: 15px; padding: 12px; } /* Adjust padding/margin */
+            .feature-icon { min-width: 50px; height: 50px; font-size: 22px; margin-right: 15px; } /* Adjusted icon size */
+            .feature-text h3 { font-size: 18px; }
+            .feature-text p { font-size: 15px; }
+            /* Adjust title size for mobile */
+            .comparison-column.old-way .feature-text p:first-child { font-size: 18px; }
+
+
+            .comparison-section { padding: 60px 0; }
+            .comparison-column h2 { font-size: 26px; }
+            .comparison-column { max-width: 95%; padding: 25px; }
+
+            .video-wrapper { max-width: 95%; }
+            .play-button { width: 60px; height: 60px; }
+            .play-button::after { border-top-width: 15px; border-bottom-width: 15px; border-left-width: 22px; margin-left: 5px; }
+        }
+
+         @media (max-width: 576px) {
+            /* .logo-container justify-content: center; already set */
+            .logo-text { font-size: 32px; } /* Adjust text logo size */
+
+            .hero-caption { font-size: 28px; } /* Adjust caption size */
+             /* REMOVED .hero h1 */
+            .hero h2:not(.hero-caption):not(.hero-subtext) { font-size: 20px; } /* Adjust original h2 */
+            .hero-subtext { font-size: 17px; } /* Adjust subtext size */
+            .hero { padding: 50px 0; }
+
+            .form-benefits-section { padding: 60px 0; }
+            .form-part h2 { font-size: 24px; } /* Adjust form h2 size */
+
+            .comparison-section { padding: 50px 0; }
+            .comparison-column h2 { font-size: 24px; }
+            .comparison-column.old-way .feature-text p:first-child { font-size: 17px; } /* Further adjust title size */
+         }
+    </style>
+</head>
+<body>
+    <!-- Logo Section -->
+    <header class="logo-section">
+        <div class="container logo-container">
+            <!-- Text Art Logo -->
+            <div class="logo-text">LeadLuxe</div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c7da?q=80&w=1200&auto=format&fit=crop');">
+        <div class="container">
+            <!-- Changed Caption to H2 -->
+            <h2 class="hero-caption">Autopilot Sales Generation and Customer Service</h2>
+            <!-- REMOVED H1 -->
+            <!-- Original H2 -->
+            <h2>Small business owner looking to 10x their monthly profit in 90 days.</h2>
+            <!-- Changed Subtext to H2 -->
+            <h2 class="hero-subtext">Learn how you can use our proprietary Lead Luxe System to Generate <span class="highlight">$30,000 to $100,000</span> in new sales per month, while working less time ever.</h2>
+            <a href="#form" class="btn">Get Started Now</a>
+        </div>
+    </section>
+
+    <!-- Form & Benefits Section -->
+    <section class="form-benefits-section" id="form">
+        <div class="container">
+            <div class="form-benefits-wrapper">
+                <!-- Form Part (Now Centered) -->
+                <div class="form-part">
+                    <!-- Moved Text (was H1) -->
+                    <h2 id="formTitle">Get setup in less than 30 mins.</h2>
+                    <!-- Original Form Title -->
+                    <h2>Start Your 10x Growth Journey</h2>
+                    <form id="leadForm">
+                        <div class="form-group">
+                            <label for="fullname">Full Name</label>
+                            <input type="text" id="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Enter your phone number" required>
+                        </div>
+                        <button type="submit" class="submit-btn">Next - Book Your Setup</button>
+                    </form>
+                    <div id="message"></div>
+                    <div id="responseDisplay">
+                        <pre id="responseContent"></pre>
+                    </div>
+                    <div id="my-cal-inline">
+                        <p>Loading booking calendar...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison-section">
+        <div class="container">
+            <div class="comparison-wrapper">
+                <!-- Old Way Column - UPDATED STRUCTURE with descriptions -->
+                <div class="comparison-column old-way">
+                    <h2>The Old Way</h2>
+                    <div class="feature-item">
+                        <div class="feature-icon">🏃‍♂️</div>
+                        <div class="feature-text">
+                            <p>Manually chasing leads</p>
+                            <p>Wasting time on cold calls and unqualified prospects.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📉</div>
+                        <div class="feature-text">
+                            <p>Inconsistent appointment booking</p>
+                            <p>Struggling to fill your calendar reliably.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📵</div>
+                        <div class="feature-text">
+                            <p>Missing calls during busy times</p>
+                            <p>Losing potential customers when you can't answer.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">⏳</div>
+                        <div class="feature-text">
+                            <p>Spending hours on follow-ups</p>
+                            <p>Tedious manual reminders and nurturing efforts.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🤯</div>
+                        <div class="feature-text">
+                            <p>Struggling with customer support</p>
+                            <p>Overwhelmed by inquiries and repetitive questions.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🚧</div>
+                        <div class="feature-text">
+                            <p>Limited growth potential</p>
+                            <p>Hitting a ceiling due to manual process limitations.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">⚙️</div>
+                        <div class="feature-text">
+                            <p>Working IN the business, not ON it</p>
+                            <p>Stuck in daily tasks instead of strategic growth.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lead Luxe Way Column -->
+                <div class="comparison-column leadluxe-way">
+                    <h2>Lead Luxe System Benefits</h2>
+                    <div class="feature-item">
+                        <div class="feature-icon">💰</div>
+                        <div class="feature-text">
+                            <h3>Massive Revenue Growth</h3>
+                            <p>Generate $30,000 to $100,000 in new sales per month, while working less time ever</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📅</div>
+                        <div class="feature-text">
+                            <h3>Automated Appointments</h3>
+                            <p>Get new and repeat customers appointments and follow ups on autopilot</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📞</div>
+                        <div class="feature-text">
+                            <h3>Never Miss a Call</h3>
+                            <p>Never answer and miss an incoming call, our system handles 10+ calls simultaneously on autopilot</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔄</div>
+                        <div class="feature-text">
+                            <h3>Automated Support</h3>
+                            <p>Never call customers, our system handles 10+ customer support calls simultaneously on autopilot</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <div class="feature-text">
+                            <h3>Focus on Delivery</h3>
+                            <p>All you have to do is fulfill your customers orders</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="container">
+             <div class="video-wrapper">
+                <div class="video-container">
+                    <img src="https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=800&auto=format&fit=crop" alt="Lead Luxe System video thumbnail">
+                    <div class="play-button" aria-label="Play Video"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Lead Luxe System. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Link to main.js -->
     <script type="module" src="/main.js"></script>
-  </body>
+
+</body>
 </html>
